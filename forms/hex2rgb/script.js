@@ -1,20 +1,33 @@
-const hexInput = document.getElementById('hex');
-const rgbOutput = document.getElementById('rgb');
-const errorMessage = document.getElementById('error');
+document.addEventListener('DOMContentLoaded', () => {
+    const hexInput = document.getElementById('hex');
+    const rgbOutput = document.getElementById('rgb');
+    const error = document.getElementById('error');
+    const container = document.querySelector('.container');
 
-hexInput.addEventListener('input', function() {
-    // Проверяем, введен ли полный HEX-код
-    if (hexInput.value.length !== 7 || !/^#([A-Fa-f0-9]{6})$/.test(hexInput.value)) {
-        errorMessage.classList.remove('hidden');
-        return;
-    }
+    hexInput.addEventListener('input', () => {
+        error.classList.add('hidden');
+        const hex = hexInput.value.trim();
+        
+        // Проверяем длину ввода
+        if (hex.length !== 7) {
+            return;  // Ждем полного ввода
+        }
 
-    errorMessage.classList.add('hidden');
-    const hex = hexInput.value.slice(1); // Убираем символ #
-    const r = parseInt(hex.substring(0, 2), 16);
-    const g = parseInt(hex.substring(2, 4), 16);
-    const b = parseInt(hex.substring(4, 6), 16);
+        // Проверяем валидность формата
+        if (!/^#([A-Fa-f0-9]{6})$/.test(hex)) {
+            error.classList.remove('hidden');
+            rgbOutput.textContent = '';
+            return;
+        }
 
-    rgbOutput.textContent = `RGB: ${r}, ${g}, ${b}`;
-    document.body.style.backgroundColor = hexInput.value;
+        // Преобразование HEX в RGB
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        
+        // Меняем цвет фона контейнера
+        container.style.backgroundColor = hex;
+        
+        rgbOutput.textContent = `rgb(${r}, ${g}, ${b})`;
+    });
 });

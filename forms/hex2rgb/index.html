@@ -8,9 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <input type="text" id="hex" placeholder="#FFFFFF">
-        <div id="rgb"></div>
-        <div id="error" class="hidden">Неверный формат HEX</div>
+        <div class="input-wrapper">
+            <input type="text" id="hex" placeholder="#FFFFFF">
+        </div>
+        
+        <div class="result-wrapper">
+            <div class="output-wrapper" id="rgb-container">
+                <div id="rgb"></div>
+            <div id="error" class="hidden">Ошибка!</div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
