@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#hex {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+
+#rgb, #error {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
+}
